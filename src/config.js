@@ -26,9 +26,9 @@ export const DEFAULT_PATHS = {
 export const DEFAULT_SETTINGS = {
   MENU_PLACEMENT: MENU_PLACEMENT.Vertical,
   MENU_BEHAVIOUR: MENU_BEHAVIOUR.Pinned,
-  LAYOUT: LAYOUT.Fluid,
+  LAYOUT: LAYOUT.Boxed,
   RADIUS: RADIUS.Rounded,
-  COLOR: THEME_COLOR.LightBlue,
+  COLOR: THEME_COLOR.LightGreen,
   NAV_COLOR: NAV_COLOR.Default,
   USE_SIDEBAR: false,
 };
