@@ -105,11 +105,11 @@ const NavUserMenuDropdownToggle = React.memo(
       className="d-flex user position-relative"
       data-toggle="dropdown"
       aria-expanded={expanded}
-      onClick={(e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        onClick(e);
-      }}
+      // onClick={(e) => {
+      //   e.preventDefault();
+      //   e.stopPropagation();
+      //   onClick(e);
+      // }}
     >
       <img className="profile" alt={user.name} src={user.thumb} />
       <div className="name">{user.name}</div>
