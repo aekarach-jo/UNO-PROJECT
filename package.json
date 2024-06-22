@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3300",
   "dependencies": {
+    "@fontsource/prompt": "^5.0.14",
     "@fullcalendar/bootstrap": "^5.9.0",
     "@fullcalendar/daygrid": "^5.9.0",
     "@fullcalendar/interaction": "^5.9.0",

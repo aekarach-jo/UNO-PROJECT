@@ -1450,6 +1450,11 @@
     "minimatch" "^3.0.4"
     "strip-json-comments" "^3.1.1"
 
+"@fontsource/prompt@^5.0.14":
+  "integrity" "sha512-62qsomeqmBypufjRO0g034ipZCnXB9UcBKvL4kwVpFNFNs9YJF3nlT9U6dOmxW8uv0b+PSKzXsIYmci/q8jegw=="
+  "resolved" "https://registry.npmjs.org/@fontsource/prompt/-/prompt-5.0.14.tgz"
+  "version" "5.0.14"
+
 "@formatjs/ecma402-abstract@1.9.8":
   "integrity" "sha512-2U4n11bLmTij/k4ePCEFKJILPYwdMcJTdnKVBi+JMWBgu5O1N+XhCazlE6QXqVO1Agh2Doh0b/9Jf1mSmSVfhA=="
   "resolved" "https://registry.npmjs.org/@formatjs/ecma402-abstract/-/ecma402-abstract-1.9.8.tgz"

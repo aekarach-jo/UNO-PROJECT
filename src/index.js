@@ -16,6 +16,9 @@ import { getLayoutlessRoutes } from 'routing/helper';
 import defaultRoutes from 'routing/default-routes';
 import routesAndMenuItems from 'routes.js';
 import { Slide, ToastContainer } from 'react-toastify';
+import '@fontsource/prompt';
+import '@fontsource/prompt/400.css';
+import '@fontsource/prompt/400-italic.css';
 
 if (process.env.REACT_APP_USE_MOCK) {
   import('@mock-api');
