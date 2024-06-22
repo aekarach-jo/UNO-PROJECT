@@ -6,13 +6,7 @@ const NavLogo = () => {
   return (
     <div className="logo position-relative">
       <Link to={DEFAULT_PATHS.APP}>
-        <img src="/img/logo/UNO-logo.png" alt="UNO Logo" />
-        {/*
-          Logo can be added directly
-          <img src="/img/logo/logo-white.svg" alt="logo" />
-          Or added via css to provide different ones for different color themes
-         */}
-        {/* <div className="img" /> */}
+        <img width={222} height={99} src="/img/logo/UNO-logo.png" alt="logo" />
       </Link>
     </div>
   );

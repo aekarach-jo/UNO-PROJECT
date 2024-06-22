@@ -7,7 +7,6 @@ import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { MENU_PLACEMENT } from 'constants.js';
 import CsLineIcons from 'cs-line-icons/CsLineIcons';
 import { layoutShowingNavMenu } from 'layout/layoutSlice';
-import { fetchNotifications } from './notificationSlice';
 
 const NotificationsDropdownToggle = React.memo(
   React.forwardRef(({ onClick, expanded = false }, ref) => (
@@ -79,7 +78,7 @@ const Notifications = () => {
   const { showingNavMenu } = useSelector((state) => state.layout);
 
   useEffect(() => {
-    dispatch(fetchNotifications());
+    // dispatch(fetchNotifications());
     return () => {};
     // eslint-disable-next-line
   }, []);

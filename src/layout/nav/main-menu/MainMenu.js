@@ -133,6 +133,7 @@ const MainMenu = () => {
         options={{
           scrollbars: { autoHide: 'leave', autoHideDelay: 600 },
           overflowBehavior: { x: 'hidden', y: 'scroll' },
+          autoUpdate: true,
         }}
         className="menu-container flex-grow-1"
       >

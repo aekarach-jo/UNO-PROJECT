@@ -4,18 +4,19 @@ import classNames from 'classnames';
 
 import { MENU_BEHAVIOUR, MENU_PLACEMENT } from 'constants.js';
 import NavUserMenu from './NavUserMenu';
-import NavIconMenu from './NavIconMenu';
+// import NavIconMenu from './NavIconMenu';
 import MainMenu from './main-menu/MainMenu';
 import NavLogo from './NavLogo';
 import NavMobileButtons from './NavMobileButtons';
 import { menuChangeAttrMenuAnimate, menuChangeCollapseAll } from './main-menu/menuSlice';
-import NavLanguageSwitcher from './NavLanguageSwitcher';
+import NavTopBg from './NavTopBg';
+// import NavLanguageSwitcher from './NavLanguageSwitcher';
 
 const DELAY = 80;
 
 const Nav = () => {
   const dispatch = useDispatch();
-  const { navClasses, placementStatus, behaviourStatus, attrMobile, menuPadding } = useSelector((state) => state.menu);
+  const { navClasses, placementStatus, behaviourStatus, attrMobile, menuPadding, behaviour, attrMenuAnimate } = useSelector((state) => state.menu);
   const mouseActionTimer = useRef(null);
 
   // Vertical menu semihidden state showing
@@ -45,7 +46,7 @@ const Nav = () => {
     }
   };
 
-  const onMouseLeave = () => { 
+  const onMouseLeave = () => {
     if (mouseActionTimer.current) clearTimeout(mouseActionTimer.current);
     mouseActionTimer.current = setTimeout(() => {
       onMouseLeaveDelay();
@@ -53,13 +54,14 @@ const Nav = () => {
   };
 
   return (
-    <div id="nav" className={classNames('nav-container d-flex', navClasses)} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+    <div id="nav" className={classNames('nav-container rounded d-flex', navClasses)} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <div
         className="nav-content d-flex"
         style={placementStatus.placementHtmlData === MENU_PLACEMENT.Horizontal && menuPadding ? { paddingRight: menuPadding } : {}}
       >
-        <NavLogo />
-        <NavLanguageSwitcher />
+        <NavTopBg />
+        {/* <NavLanguageSwitcher /> */}
+        {(behaviour === MENU_BEHAVIOUR.Pinned || attrMenuAnimate === 'show') && <NavLogo />}
         <NavUserMenu />
         {/* <NavIconMenu /> */}
         <MainMenu />

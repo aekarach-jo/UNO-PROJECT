@@ -3,7 +3,7 @@ import { Dropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { MENU_PLACEMENT } from 'constants.js';
-import { changeLang } from 'lang/langSlice';
+import { changeLang, languages } from 'lang/langSlice';
 import { layoutShowingNavMenu } from 'layout/layoutSlice';
 
 const MENU_NAME = 'NavLanguageSwitcher';
@@ -18,7 +18,7 @@ const NavLanguageSwitcher = () => {
   } = useSelector((state) => state.menu);
   const { color } = useSelector((state) => state.settings);
   const { showingNavMenu } = useSelector((state) => state.layout);
-  const { languages, currentLang } = useSelector((state) => state.lang);
+  const { currentLang } = useSelector((state) => state.lang);
 
   const onSelectLang = (code) => {
     dispatch(changeLang(code));

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import GlideJs from '@glidejs/glide';
 import '@glidejs/glide/dist/css/glide.core.min.css';
 import { useWindowSize } from 'hooks/useWindowSize';
@@ -22,6 +22,9 @@ const Glide = ({
   },
   noDots = false,
   noControls = false,
+  noKeyboard = false,
+  setBoxItemIndex = () => {},
+  boxItemIndex = 0,
   children,
 }) => {
   const carouselRef = React.useRef();
@@ -34,8 +37,8 @@ const Glide = ({
     glideRef.current = new GlideJs(carouselRef.current, options);
     if (!noDots) {
       glideRef.current.on(['mount.before'], () => {
-        const bulletCount = glideRef.current.selector.querySelectorAll('.glide__slide').length;
-        const bulletWrapper = glideRef.current.selector.querySelectorAll('.glide__bullets')[0];
+        const bulletCount = glideRef?.current?.selector?.querySelectorAll('.glide__slide').length;
+        const bulletWrapper = glideRef?.current?.selector?.querySelectorAll('.glide__bullets')[0];
 
         if (!bulletWrapper) {
           return;
@@ -55,26 +58,32 @@ const Glide = ({
     }
 
     // Hiding them with d-none if it is needed
-    glideRef.current.on(['resize', 'build.after'], () => {
-      const { perView } = glideRef.current.settings;
-      const total = glideRef.current.selector.querySelectorAll('.glide__slide').length;
-      const sub = total - perView;
+    if (glideRef && glideRef?.current) {
+      const glideCurrent = glideRef.current;
 
-      // Adds or removes d-none class
-      glideRef.current.selector.querySelectorAll('.glide__bullet').forEach((el, i) => {
-        if (i > sub) {
-          el.classList.add('d-none');
-        } else {
-          el.classList.remove('d-none');
-        }
-      });
-      // Prevents the empty last stop when resized for a larger breakpoint with more items
-      if (glideRef.current.index > sub && sub >= 0) {
-        glideRef.current.go(`=${sub}`);
+      if (glideCurrent.on) {
+        glideCurrent.on(['resize', 'build.after'], () => {
+          const { perView } = glideRef?.current?.settings;
+          const total = glideRef?.current?.selector?.querySelectorAll('.glide__slide').length;
+          const sub = total - perView;
+
+          // Adds or removes d-none class
+          glideRef?.current?.selector?.querySelectorAll('.glide__bullet').forEach((el, i) => {
+            if (i > sub) {
+              el.classList.add('d-none');
+            } else {
+              el.classList.remove('d-none');
+            }
+          });
+          // Prevents the empty last stop when resized for a larger breakpoint with more items
+          if (glideRef.current.index > sub && sub >= 0) {
+            glideRef.current.go(`=${sub}`);
+          }
+        });
       }
-    });
-
+    }
     glideRef.current.mount();
+    glideRef.current.go(`=${boxItemIndex}`);
   };
   const update = () => {
     glideRef.current.update();
@@ -82,6 +91,23 @@ const Glide = ({
   const destroy = () => {
     glideRef.current.destroy();
   };
+
+  // const handleKeydown = useCallback(
+  //   (event) => {
+  //     if (noKeyboard && (event.key === 'ArrowLeft' || event.key === 'ArrowRight' || event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
+  //       console.log(event.key);
+  //       event.preventDefault();
+  //     }
+  //   },
+  //   [noKeyboard]
+  // );
+
+  // useEffect(() => {
+  //   document.addEventListener('keydown', handleKeydown);
+  //   return () => {
+  //     document.removeEventListener('keydown', handleKeydown);
+  //   };
+  // }, [handleKeydown]);
 
   useEffect(() => {
     init();
@@ -93,11 +119,18 @@ const Glide = ({
 
   useEffect(() => {
     if (width && carouselRef.current && glideRef.current) {
+      if (glideRef.current.selector.querySelectorAll('.glide__slide').length === 1) {
+        setBoxItemIndex(0);
+      } else {
+        setBoxItemIndex(glideRef.current.index);
+      }
       setTimeout(() => {
+        destroy();
+        init();
         update();
       }, 10);
     }
-  }, [width, placementStatus, behaviourStatus, attrMobile]);
+  }, [width, placementStatus, behaviourStatus, attrMobile, children]);
 
   return (
     <div ref={carouselRef} className={`glide ${className}`}>

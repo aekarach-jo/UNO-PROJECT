@@ -5,6 +5,7 @@ import { Col, Dropdown, Row } from 'react-bootstrap';
 import { MENU_PLACEMENT } from 'constants.js';
 import CsLineIcons from 'cs-line-icons/CsLineIcons';
 import { layoutShowingNavMenu } from 'layout/layoutSlice';
+import { NavLink } from 'react-router-dom';
 
 const NavUserMenuContent = () => (
   <div>
@@ -87,9 +88,9 @@ const NavUserMenuContent = () => (
             </a>
           </li>
           <li>
-            <a href="#/!">
+            <NavLink to="/logout">
               <CsLineIcons icon="logout" className="me-2" size="17" /> <span className="align-middle">Logout</span>
-            </a>
+            </NavLink>
           </li>
         </ul>
       </Col>
@@ -98,23 +99,30 @@ const NavUserMenuContent = () => (
 );
 
 const NavUserMenuDropdownToggle = React.memo(
-  React.forwardRef(({ onClick, expanded = false, user = {} }, ref) => (
-    <a
-      href="#/!"
-      ref={ref}
-      className="d-flex user position-relative"
-      data-toggle="dropdown"
-      aria-expanded={expanded}
-      // onClick={(e) => {
-      //   e.preventDefault();
-      //   e.stopPropagation();
-      //   onClick(e);
-      // }}
-    >
-      <img className="profile" alt={user.name} src={user.thumb} />
-      <div className="name">{user.name}</div>
-    </a>
-  ))
+  React.forwardRef(({ onClick, expanded = false }, ref) => {
+    const storedValue = localStorage.getItem('token');
+    const token = JSON.parse(storedValue);
+    const userLogin = token?.user;
+    const ResName = token?.user?.employee;
+    return (
+      <a
+        href="#/!"
+        ref={ref}
+        className="d-flex gap-2 user position-relative"
+        data-toggle="dropdown"
+        aria-expanded={expanded}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          onClick(e);
+        }}
+      >
+        <img className="profile" alt={ResName?.avatar} src={`${userLogin?.avatar ? userLogin?.avatar : '/img/profile/profile-11.webp'}`} />
+        <div className="name">{`${ResName?.firstName || 'ธนวิทย์'}${' '}${ResName?.lastName || 'ธนากานต์'}`}</div>
+        <div className="name">{`${'Thanawit@gmail.com'}`}</div>
+      </a>
+    );
+  })
 );
 
 // Dropdown needs access to the DOM of the Menu to measure it

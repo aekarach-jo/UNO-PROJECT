@@ -51,7 +51,7 @@ html[data-radius='flat'] {
   --card-spacing-sm-vertical: 1.25rem 1.75rem;
 
   --main-spacing-horizontal: 2.5rem;
-  --main-spacing-vertical: 2rem;
+  --main-spacing-vertical: 0rem;
   --title-spacing: 1.25rem;
 
   @include respond-below(lg) {

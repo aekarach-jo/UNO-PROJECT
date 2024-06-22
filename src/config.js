@@ -36,7 +36,7 @@ export const DEFAULT_SETTINGS = {
 export const DEFAULT_USER = {
   id: 1,
   name: 'Lisa Jackson',
-  thumb: '/img/profile/profile-9.webp',
+  thumb: '/img/profile/profile-2.webp',
   role: USER_ROLE.Admin,
   email: 'lisajackson@gmail.com',
 };

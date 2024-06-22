@@ -4,8 +4,8 @@ import { useLocation } from 'react-router-dom';
 import useLayout from 'hooks/useLayout';
 import Footer from 'layout/footer/Footer';
 import Nav from 'layout/nav/Nav';
-import RightButtons from 'layout/right-buttons/RightButtons';
-import SidebarMenu from 'layout/nav/sidebar-menu/SidebarMenu';
+// import RightButtons from 'layout/right-buttons/RightButtons';
+// import SidebarMenu from 'layout/nav/sidebar-menu/SidebarMenu';
 
 const Layout = ({ children }) => {
   useLayout();
@@ -19,11 +19,14 @@ const Layout = ({ children }) => {
   }, [pathname]);
   return (
     <>
+      <head>
+        <link rel="stylesheet" href="../../public/css/main.css" />
+      </head>
       <Nav />
       <main>
         <Container>
           <Row className="h-100">
-            <SidebarMenu />
+            {/* <SidebarMenu /> */}
             <Col className="h-100" id="contentArea">
               {children}
             </Col>

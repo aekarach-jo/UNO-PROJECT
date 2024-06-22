@@ -4,8 +4,8 @@ import classNames from 'classnames';
 import { Card, Figure, Modal } from 'react-bootstrap';
 
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
-import { LAYOUT, MENU_BEHAVIOUR, MENU_PLACEMENT, NAV_COLOR, RADIUS, THEME_COLOR } from 'constants.js';
-import { menuChangeBehaviour, menuChangePlacement } from 'layout/nav/main-menu/menuSlice';
+import { LAYOUT, MENU_BEHAVIOUR, NAV_COLOR, RADIUS, THEME_COLOR } from 'constants.js';
+import { menuChangeBehaviour } from 'layout/nav/main-menu/menuSlice';
 import { settingsChangeColor, settingsChangeLayout, settingsChangeNavColor, settingsChangeRadius } from 'settings/settingsSlice';
 
 const OptionGroup = ({ label = '', children, noContainer = false }) => (
@@ -26,7 +26,7 @@ const OptionItem = ({ label = '', className = 'w-50', active = false, onClick = 
 const SettingsModal = ({ handleClose, show = false }) => {
   const dispatch = useDispatch();
   const { color, layout, radius, navColor } = useSelector((state) => state.settings);
-  const { behaviour, placement } = useSelector((state) => state.menu);
+  const { behaviour } = useSelector((state) => state.menu);
 
   const handleChange = (action, payload) => {
     dispatch(action(payload));
@@ -172,30 +172,6 @@ const SettingsModal = ({ handleClose, show = false }) => {
                   <Card className="rounded-md p-3 mb-1 no-shadow">
                     <Figure className="figure-primary figure-dark top" />
                     <Figure className="figure-secondary bottom" />
-                  </Card>
-                </OptionItem>
-              </>
-            </OptionGroup>
-            <OptionGroup label="Menu Placement">
-              <>
-                <OptionItem
-                  label="HORIZONTAL"
-                  active={placement === MENU_PLACEMENT.Horizontal}
-                  onClick={() => handleChange(menuChangePlacement, MENU_PLACEMENT.Horizontal)}
-                >
-                  <Card className="rounded-md p-3 mb-1 no-shadow">
-                    <Figure className="figure-primary top" />
-                    <Figure className="figure-secondary bottom" />
-                  </Card>
-                </OptionItem>
-                <OptionItem
-                  label="VERTICAL"
-                  active={placement === MENU_PLACEMENT.Vertical}
-                  onClick={() => handleChange(menuChangePlacement, MENU_PLACEMENT.Vertical)}
-                >
-                  <Card className="rounded-md p-3 mb-1 no-shadow">
-                    <Figure className="figure-primary left" />
-                    <Figure className="figure-secondary right" />
                   </Card>
                 </OptionItem>
               </>

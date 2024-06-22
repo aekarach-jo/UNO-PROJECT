@@ -76,6 +76,9 @@ const menuSlice = createSlice({
     menuChangeMenuPadding(state, action) {
       state.menuPadding = action.payload;
     },
+    menuResetUsePlacement(state) {
+      state.placement = DEFAULT_SETTINGS.MENU_PLACEMENT;
+    },
   },
 });
 
@@ -94,6 +97,7 @@ export const {
   menuChangeUseSidebar,
   menuResetUseSidebar,
   menuChangeMenuPadding,
+  menuResetUsePlacement,
 } = menuSlice.actions;
 const menuReducer = menuSlice.reducer;
 
