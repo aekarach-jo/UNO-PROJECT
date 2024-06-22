@@ -117,7 +117,7 @@ const NavUserMenuDropdownToggle = React.memo(
           onClick(e);
         }}
       >
-        <img className="profile" alt={ResName?.avatar} src={`${userLogin?.avatar ? userLogin?.avatar : '/img/profile/profile-11.webp'}`} />
+        <img className="profile" alt={ResName?.avatar} src={`${userLogin?.avatar ? userLogin?.avatar : '/img/profile/profile-12.png'}`} />
         <div className="name">{`${ResName?.firstName || 'ธนวิทย์'}${' '}${ResName?.lastName || 'ธนากานต์'}`}</div>
         <div className="name">{`${'Thanawit@gmail.com'}`}</div>
       </a>
