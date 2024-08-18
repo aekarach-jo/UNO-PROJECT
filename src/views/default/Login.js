@@ -57,7 +57,7 @@ const Login = () => {
       <div className="w-100 w-lg-75 w-xxl-50">
         <div>
           <div className="mb-5">
-            <img className="w-100" src="/img/logo/Tensorbrick-logo.png" alt="KSP Logo" />
+            <img className="w-100" src="/img/logo/logo.png" alt="KSP Logo" />
           </div>
         </div>
       </div>

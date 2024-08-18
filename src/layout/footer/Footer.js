@@ -15,7 +15,7 @@ const Footer = () => {
         <Container>
           <Row>
             <Col xs="12" sm="6">
-              <p className="mb-0 text-muted text-medium">&#169; Tensorbrick Technology 2022.</p>
+              <p className="mb-0 text-muted text-medium">&#169; Woft Development 2022.</p>
             </Col>
             <Col sm="6" className="d-none d-sm-block">
               <Breadcrumb className="pt-0 pe-0 mb-0 float-end">

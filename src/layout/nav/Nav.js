@@ -10,7 +10,7 @@ import NavLogo from './NavLogo';
 import NavMobileButtons from './NavMobileButtons';
 import { menuChangeAttrMenuAnimate, menuChangeCollapseAll } from './main-menu/menuSlice';
 import NavTopBg from './NavTopBg';
-// import NavLanguageSwitcher from './NavLanguageSwitcher';
+import NavLanguageSwitcher from './NavLanguageSwitcher';
 
 const DELAY = 80;
 
@@ -60,7 +60,7 @@ const Nav = () => {
         style={placementStatus.placementHtmlData === MENU_PLACEMENT.Horizontal && menuPadding ? { paddingRight: menuPadding } : {}}
       >
         <NavTopBg />
-        {/* <NavLanguageSwitcher /> */}
+        <NavLanguageSwitcher />
         {(behaviour === MENU_BEHAVIOUR.Pinned || attrMenuAnimate === 'show') && <NavLogo />}
         <NavUserMenu />
         {/* <NavIconMenu /> */}

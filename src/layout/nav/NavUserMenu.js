@@ -128,11 +128,12 @@ const NavUserMenuDropdownToggle = React.memo(
 // Dropdown needs access to the DOM of the Menu to measure it
 const NavUserMenuDropdownMenu = React.memo(
   React.forwardRef(({ style, className }, ref) => {
-    return (
-      <div ref={ref} style={style} className={classNames('dropdown-menu dropdown-menu-end user-menu wide', className)}>
-        <NavUserMenuContent />
-      </div>
-    );
+    // return <></>;
+    // return (
+    //   <div ref={ref} style={style} className={classNames('dropdown-menu dropdown-menu-end user-menu wide', className)}>
+    //     <NavUserMenuContent />
+    //   </div>
+    // );
   })
 );
 

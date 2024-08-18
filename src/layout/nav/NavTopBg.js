@@ -4,7 +4,7 @@ import React from 'react';
 const NavTopBg = () => {
   return (
     <div
-      className="logo position-absolute d-none d-sm-block"
+      className="logo position-absolute d-none d-sm-none d-lg-block"
       style={{
         width: '404px',
         height: '404px',

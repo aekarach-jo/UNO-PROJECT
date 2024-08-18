@@ -24,14 +24,14 @@ const Layout = ({ children }) => {
       </head>
       <Nav />
       <main>
-        <Container>
-          <Row className="h-100">
-            {/* <SidebarMenu /> */}
-            <Col className="h-100" id="contentArea">
-              {children}
-            </Col>
-          </Row>
-        </Container>
+        {/* <Container> */}
+        <Row className="h-100">
+          {/* <SidebarMenu /> */}
+          <Col className="h-100 py-5" id="contentArea">
+            {children}
+          </Col>
+        </Row>
+        {/* </Container> */}
       </main>
       <Footer />
       {/* <RightButtons /> */}
